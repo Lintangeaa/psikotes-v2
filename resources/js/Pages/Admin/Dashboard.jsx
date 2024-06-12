@@ -2,6 +2,8 @@ import AuthenticatedAdminLayout from "@/Layouts/AuthenticatedAdminLayout";
 import React from "react";
 import { Head } from "@inertiajs/react";
 import { GrDocumentUser } from "react-icons/gr";
+import { SiTestcafe } from "react-icons/si";
+import { FaUserGraduate } from "react-icons/fa6";
 
 const Dashboard = ({ auth }) => {
     return (
@@ -19,13 +21,33 @@ const Dashboard = ({ auth }) => {
                 </div>
                 <section className="p-2 flex justify-between">
                     <div className="w-56 bg-cyan-200 rounded shadow-md p-2">
-                        <div className="flex flex-col items-center space-y-2">
+                        <div className="flex flex-col items-center space-y-2 p-4">
                             <GrDocumentUser className="text-4xl text-cyan-800" />
-                            <p className="font-semibold">Total Mahasiswa</p>
+                            <p className="font-semibold text-cyan-800">
+                                Total Mahasiswa
+                            </p>
+                            <p>120</p>
                         </div>
                     </div>
-                    <div className="w-56 bg-yellow-200">a</div>
-                    <div className="w-56 bg-yellow-200">a</div>
+
+                    <div className="w-56 bg-red-200 rounded shadow-md p-2">
+                        <div className="flex flex-col items-center space-y-2 p-4">
+                            <FaUserGraduate className="text-4xl text-red-800" />
+                            <p className="font-semibold text-red-800">
+                                Total Alumnus
+                            </p>
+                            <p>120</p>
+                        </div>
+                    </div>
+                    <div className="w-56 bg-green-200 rounded shadow-md p-2">
+                        <div className="flex flex-col items-center space-y-2 p-4">
+                            <SiTestcafe className="text-4xl text-green-800" />
+                            <p className="font-semibold text-green-800">
+                                Total Sudah Test
+                            </p>
+                            <p>120</p>
+                        </div>
+                    </div>
                 </section>
             </div>
         </AuthenticatedAdminLayout>

@@ -59,8 +59,8 @@ export default function AuthenticatedAdminLayout({ user, header, children }) {
                         Dashboard
                     </NavLink>
                     <NavLink
-                        href={route("dashboard")}
-                        active={route().current("dashboard")}
+                        href={route("admin.mahasiswa")}
+                        active={route().current("admin.mahasiswa")}
                     >
                         Mahasiswa
                     </NavLink>

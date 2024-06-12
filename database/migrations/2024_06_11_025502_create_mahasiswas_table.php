@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('year');
             $table->string('phone');
             $table->string('address');
+            $table->enum('status', ['Aktif', 'Alumni']);
             $table->timestamps();
         });
 
