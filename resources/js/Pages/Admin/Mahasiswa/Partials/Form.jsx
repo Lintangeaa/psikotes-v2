@@ -84,14 +84,27 @@ const FormMahasiswa = ({
                             </button>
                         </Dropdown.Trigger>
 
-                        <Dropdown.Content>
-                            <button
+                        <Dropdown.Content
+                            align="left"
+                            width="48"
+                            contentClasses="py-1 bg-white"
+                        >
+                            <Dropdown.Link
                                 onClick={() => setData("major", "Siswa")}
-                                type="button"
-                                className="w-full"
                             >
                                 Siswa
-                            </button>
+                            </Dropdown.Link>
+                            <Dropdown.Link
+                                onClick={() => setData("major", "Guru")}
+                            >
+                                Guru
+                            </Dropdown.Link>
+                            <Dropdown.Link
+                                onClick={() => setData("major", "Admin")}
+                            >
+                                Admin
+                            </Dropdown.Link>
+                            {/* Tambahkan lebih banyak opsi sesuai kebutuhan */}
                         </Dropdown.Content>
                     </Dropdown>
                     <InputError className="mt-2" message={errors.major} />
