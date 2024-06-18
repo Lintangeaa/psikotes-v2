@@ -1,12 +1,11 @@
 import AuthenticatedAdminLayout from "@/Layouts/AuthenticatedAdminLayout";
 import React from "react";
 import { Head } from "@inertiajs/react";
-import { GrDocumentUser } from "react-icons/gr";
-import { SiTestcafe } from "react-icons/si";
-import { FaUserGraduate } from "react-icons/fa6";
+import TableMahasiswa from "./Partials/Table";
+import RedirectButton from "@/Components/RedirectButton";
 
-const Mahasiswa = ({ auth, mahasiswa }) => {
-    console.log(mahasiswa);
+const Mahasiswa = ({ auth, mahasiswas }) => {
+    console.log(mahasiswas);
     return (
         <AuthenticatedAdminLayout
             user={auth.user}
@@ -16,31 +15,19 @@ const Mahasiswa = ({ auth, mahasiswa }) => {
                 </h2>
             }
         >
+            <Head title="Mahasiswa" />
             <div className="rounded bg-white/80 shadow-lg p-5">
                 <div className="flex justify-center font-semibold">
-                    Summary RMIB Platform
+                    Daftar Mahasiswa di RMIB Platform
                 </div>
-                <section className="p-2 flex justify-between">
-                    <div className="container">
-                        <h1>Daftar Mahasiswa</h1>
 
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Nama</th>
-                                    <th>NIM</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {mahasiswa.map((mhs, index) => (
-                                    <tr key={index}>
-                                        <td>{mhs.name}</td>
-                                        <td>{mhs.nim}</td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
+                <section className="p-2 w-full">
+                    <div className="mb-5">
+                        <RedirectButton href={route("mahasiswa.create")}>
+                            Tambah
+                        </RedirectButton>
                     </div>
+                    <TableMahasiswa datas={mahasiswas} />
                 </section>
             </div>
         </AuthenticatedAdminLayout>

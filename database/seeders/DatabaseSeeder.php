@@ -25,20 +25,20 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Mahasiswa',
                 'email' => 'mahasiswa@gmail.com',
                 'password' => Hash::make('password'),
-                'role' => 'Mahasiswa',
+                'role' => 'mahasiswa',
             ],
             [
                 'id' =>  Uuid::uuid4()->toString(),
                 'name' => 'Staff',
                 'email' => 'staff@gmail.com',
                 'password' => Hash::make('password'),
-                'role' => 'Staff',
+                'role' => 'staff',
             ],
             [
                 'id' =>  Uuid::uuid4()->toString(),
                 'name' => 'Admin',
                 'email' => 'admin@gmail.com',
-                'role' => 'Admin',
+                'role' => 'admin',
                 'password' => Hash::make('password'),
             ],
         ];

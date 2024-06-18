@@ -35,12 +35,13 @@ class AuthenticatedSessionController extends Controller
 
         $user = $request->user();
 
-        if ($user->role === 'Admin') {
-            return redirect()->intended(route('dashboard.admin', [], false));
+        if ($user->role === 'admin') {
+            return redirect()->intended(route('dashboard.admin'));
         } else {
-            return redirect()->intended(route('dashboard', [], false));
+            return redirect()->intended(route('dashboard.mahasiswa'));
         }
     }
+
     /**
      * Destroy an authenticated session.
      */
