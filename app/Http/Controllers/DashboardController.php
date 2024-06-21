@@ -14,18 +14,22 @@ class DashboardController extends Controller
         $totalMahasiswa = User::whereHas('mahasiswa', function ($query) {
             $query->where('status', 'Aktif');
         })
-            ->with(['mahasiswa' => function ($query) {
-                $query->where('status', 'Aktif');
-            }])
+            ->with([
+                'mahasiswa' => function ($query) {
+                    $query->where('status', 'Aktif');
+                }
+            ])
             ->count();
 
         // Query untuk mengambil total alumni
         $totalAlumni = User::whereHas('mahasiswa', function ($query) {
             $query->where('status', 'Alumni');
         })
-            ->with(['mahasiswa' => function ($query) {
-                $query->where('status', 'Alumni');
-            }])
+            ->with([
+                'mahasiswa' => function ($query) {
+                    $query->where('status', 'Alumni');
+                }
+            ])
             ->count();
 
         return Inertia::render('Admin/Dashboard/Index', ['totalMahasiswa' => $totalMahasiswa, 'totalAlumni' => $totalAlumni]);
@@ -33,7 +37,7 @@ class DashboardController extends Controller
 
     public function mahasiswaDashboard()
     {
-        return Inertia::render('Dashboard');
+        return Inertia::render('Mahasiswa/Dashboard/Index');
     }
 
     public function index()
@@ -43,7 +47,7 @@ class DashboardController extends Controller
         if ($user->role === 'admin') {
             return redirect()->route('dashboard.admin');
         } elseif ($user->role === 'mahasiswa') {
-            return Inertia::render('Dashboard');
+            return redirect()->route('dashboard.mahasiswa');
         }
     }
 }

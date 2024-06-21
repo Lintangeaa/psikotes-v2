@@ -22,14 +22,14 @@ export default function AuthenticatedAdminLayout({ user, header, children }) {
             >
                 <div className="flex items-center justify-between h-16 px-4 border-b border-gray-200">
                     <Link href="/">
-                        <ApplicationLogo className="block h-9 w-auto fill-current text-gray-800" />
+                        <ApplicationLogo className="block w-auto text-gray-800 fill-current h-9" />
                     </Link>
                     <button
                         onClick={toggleSidebar}
                         className="text-gray-500 hover:text-gray-600 focus:outline-none focus:text-gray-600"
                     >
                         <svg
-                            className="h-6 w-6"
+                            className="w-6 h-6"
                             stroke="currentColor"
                             fill="none"
                             viewBox="0 0 24 24"
@@ -52,7 +52,7 @@ export default function AuthenticatedAdminLayout({ user, header, children }) {
                         </svg>
                     </button>
                 </div>
-                <div className="p-5 flex flex-col pe-20">
+                <div className="flex flex-col p-5 space-y-2 pe-20">
                     <NavLink
                         href={route("dashboard.admin")}
                         active={route().current("dashboard.admin")}
@@ -64,7 +64,8 @@ export default function AuthenticatedAdminLayout({ user, header, children }) {
                         href={route("admin.mahasiswa")}
                         active={
                             route().current("admin.mahasiswa") ||
-                            route().current("mahasiswa.create")
+                            route().current("mahasiswa.create") ||
+                            route().current("mahasiswa.edit")
                         }
                     >
                         <FaUserGraduate />
@@ -73,22 +74,20 @@ export default function AuthenticatedAdminLayout({ user, header, children }) {
                 </div>
             </div>
 
-            <div className="flex flex-col w-0 flex-1 overflow-hidden">
-                <div className="flex items-center justify-between bg-white border-b border-gray-100 h-16 px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col flex-1 w-0 overflow-hidden">
+                <div className="flex items-center justify-between h-16 px-4 bg-white border-b border-gray-100 sm:px-6 lg:px-8">
                     <div className="flex">
                         <button
                             onClick={toggleSidebar}
                             className="text-gray-500 hover:text-gray-600 focus:outline-none focus:text-gray-600"
                         >
                             <svg
-                                className="h-6 w-6"
+                                className="w-6 h-6"
                                 stroke="currentColor"
                                 fill="none"
                                 viewBox="0 0 24 24"
                             >
-                                {showSidebar ? (
-                                    <></>
-                                ) : (
+                                {showSidebar ? null : (
                                     <path
                                         strokeLinecap="round"
                                         strokeLinejoin="round"
@@ -102,15 +101,15 @@ export default function AuthenticatedAdminLayout({ user, header, children }) {
                 </div>
                 <div className="overflow-y-auto">
                     {header && (
-                        <header className="bg-white shadow flex items-center justify-between px-4 sm:px-6 lg:px-8">
-                            <div className="max-w-7xl  py-6">{header}</div>
-                            <div className="ms-3 relative">
+                        <header className="flex items-center justify-between px-4 bg-white shadow sm:px-6 lg:px-8">
+                            <div className="py-6 max-w-7xl">{header}</div>
+                            <div className="relative ms-3">
                                 <Dropdown>
                                     <Dropdown.Trigger>
                                         <span className="inline-flex rounded-md">
                                             <button
                                                 type="button"
-                                                className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150"
+                                                className="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition duration-150 ease-in-out bg-white border border-transparent rounded-md hover:text-gray-700 focus:outline-none"
                                             >
                                                 {user.name}
 
@@ -148,7 +147,7 @@ export default function AuthenticatedAdminLayout({ user, header, children }) {
                             </div>
                         </header>
                     )}
-                    <main className="flex-1 relative z-0 overflow-y-auto focus:outline-none p-10">
+                    <main className="relative z-0 flex-1 p-10 overflow-y-auto focus:outline-none">
                         {children}
                     </main>
                 </div>

@@ -17,7 +17,8 @@ class Mahasiswa extends Model
         'year',
         'phone',
         'address',
-        'status'
+        'status',
+        'gender'
     ];
 
     public function user()

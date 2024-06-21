@@ -10,20 +10,23 @@ const Mahasiswa = ({ auth, mahasiswas }) => {
         <AuthenticatedAdminLayout
             user={auth.user}
             header={
-                <h2 className="font-semibold text-xl text-gray-800 leading-tight">
+                <h2 className="text-xl font-semibold leading-tight text-gray-800">
                     List Mahasiswa
                 </h2>
             }
         >
             <Head title="Mahasiswa" />
-            <div className="rounded bg-white/80 shadow-lg p-5">
+            <div className="p-5 rounded shadow-lg bg-white/80">
                 <div className="flex justify-center font-semibold">
                     Daftar Mahasiswa di RMIB Platform
                 </div>
 
-                <section className="p-2 w-full">
+                <section className="w-full p-2">
                     <div className="mb-5">
-                        <RedirectButton href={route("mahasiswa.create")}>
+                        <RedirectButton
+                            href={route("mahasiswa.create")}
+                            className="bg-blue-500 hover:bg-blue-700"
+                        >
                             Tambah
                         </RedirectButton>
                     </div>

@@ -2,34 +2,29 @@ import React, { useEffect } from "react";
 import { Head, useForm } from "@inertiajs/react";
 import AuthenticatedAdminLayout from "@/Layouts/AuthenticatedAdminLayout";
 import FormMahasiswa from "./Partials/Form";
-import { FaArrowLeft } from "react-icons/fa";
 import Alert from "@/Components/Custom/Alert";
-import RedirectButton from "@/Components/RedirectButton";
 
-const initialFormState = {
-    name: "",
-    email: "",
-    fullname: "",
-    nim: "",
-    prodi: "",
-    year: "",
-    status: "",
-    phone: "",
-    address: "",
-    gender: "",
-};
+const EditMahassiwa = ({ user, auth, session }) => {
+    const initialFormState = {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        fullname: user.mahasiswa.fullname,
+        nim: user.mahasiswa.nim,
+        major: user.mahasiswa.major,
+        year: user.mahasiswa.year,
+        status: user.mahasiswa.status,
+        phone: user.mahasiswa.phone,
+        address: user.mahasiswa.address,
+        gender: user.mahasiswa.gender,
+    };
 
-const CreateMahasiswa = ({ auth, session }) => {
-    const { data, setData, post, errors, processing, reset } =
+    const { data, setData, put, errors, processing, reset } =
         useForm(initialFormState);
 
     const submit = (e) => {
         e.preventDefault();
-        post(route("mahasiswa.store"), {
-            onSuccess: () => {
-                reset();
-            },
-        });
+        put(route("mahasiswa.update", data.id));
     };
 
     useEffect(() => {
@@ -46,7 +41,7 @@ const CreateMahasiswa = ({ auth, session }) => {
             user={auth.user}
             header={
                 <h2 className="text-xl font-semibold leading-tight text-black">
-                    Tambah Mahasiswa
+                    Edit Mahasiswa
                 </h2>
             }
         >
@@ -61,6 +56,7 @@ const CreateMahasiswa = ({ auth, session }) => {
                             errors={errors}
                             processing={processing}
                             submit={submit}
+                            isEdit={true}
                         />
                     </div>
                 </div>
@@ -69,4 +65,4 @@ const CreateMahasiswa = ({ auth, session }) => {
     );
 };
 
-export default CreateMahasiswa;
+export default EditMahassiwa;
